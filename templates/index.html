@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1> Menu de Ejercicios </h1>
+        <ul class="menu-list">
+            <li><a href="/par_impar" class="btn-card"> Par o Impar</a></li>
+            <li><a href="/tabla" class="btn-card"> Tabla de Multiplicar</a></li>
+            <li><a href="/adivina" class="btn-card"> Adivina el Número</a></li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 25px 0;">
+    </div>
+</body>
+</html>

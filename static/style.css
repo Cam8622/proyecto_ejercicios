@@ -1,0 +1,329 @@
+/*  Variables de Colores y Estilos  */
+:root {
+    --primary-color: #2015ee;
+    --primary-hover: #2015ee;
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffffd8;
+    --text-color: #1f2937;
+    --text-muted: #6b7280;
+    --success-color: #0bc486;
+    --border-radius: 12px;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos Generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.45)),
+        url("images/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: var(--bg-color);
+}
+
+/* Contenedor Tarjeta Principal */
+.container {
+    /* blanco con 85% de opacidad, así se transparenta un poco la foto. */
+    background-color: rgba(255, 255, 255, 0.85);
+
+    /* desenfoca la foto que queda detrás de la tarjeta.*/
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    /* borde finito y claro que da sensación de cristal */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+    max-width: 500px;
+    padding: 35px;
+    border-radius: var(--border-radius);
+
+    /* sombra más grande y suave para que la tarjeta flote */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    text-align: center;
+
+    animation: aparecer 0.6s ease;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--text-color);
+
+    /*  separa un poco las letras, se ve más elegante */
+    letter-spacing: 0.5px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Menú Principal (Navegación) */
+.menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+
+    /* quita el margen y la sangría que los <ul> traen por defecto */
+    padding: 0;
+    margin-top: 0;
+}
+
+.btn-card {
+    display: block;
+
+    /*  blanco semitransparente */
+    background: rgba(255, 255, 255, 0.6);
+
+    /* borde más suave que combina con el efecto vidrio */
+    border: 2px solid rgba(229, 231, 235, 0.9);
+
+    /* un poco más de alto y bordes más redondeados */
+    padding: 16px 20px;
+    border-radius: 12px;
+
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+
+    /* 0.3s para que la animación se sienta más fluida */
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-card:hover {
+    /* el botón se llena con un degradado al pasar el mouse */
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+
+    /* el texto pasa a blanco para que se lea sobre el color */
+    color: #ffffff;
+
+    /* El borde toma el mismo color del botón */
+    border-color: transparent;
+
+    /* sube un poco más que antes */
+    transform: translateY(-3px);
+
+    /* sombra más marcada, con el color del botón */
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+}
+
+/* efecto al hacer clic */
+.btn-card:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(79, 70, 229, 0.3);
+}
+
+/* Formularios e Entradas  */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+label {
+    font-weight: 600;
+    color: var(--text-muted);
+    text-align: left;
+
+    /* tamaño un poco más pequeño*/
+    font-size: 0.95rem;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+
+    /*el padding no agranda el ancho del input (evita que se salga de la tarjeta) */
+    box-sizing: border-box;
+
+    /* fondo blanco semitransparente para combinar con el vidrio */
+    background: rgba(255, 255, 255, 0.7);
+
+    border: 2px solid #e5e7eb;
+
+    /* más redondeado, igual que los botones del menú */
+    border-radius: 12px;
+
+    outline: none;
+
+    /* anima el fondo y la sombra */
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: var(--primary-color);
+
+    /* fondo blanco sólido al escribir */
+    background: #ffffff;
+
+    /* halo suave alrededor del input cuando está activo */
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
+}
+
+/* --- Botones --- */
+button, .btn-submit {
+    /* antes era un color sólido, ahora degradado igual que el menú */
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    /* sombra suave con el color del botón */
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+
+    /* anima todo para que el hover se sienta fluido */
+    transition: all 0.3s ease;
+}
+
+button:hover, .btn-submit:hover {
+    /*Subimos el brillo para que se note el hover. */
+    filter: brightness(1.1);
+
+    /* el botón sube un poquito */
+    transform: translateY(-2px);
+
+    /* La sombra crece al pasar el mouse */
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.45);
+}
+
+button:active {
+    /* Se hunde al hacer clic */
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
+}
+
+/* --- Cuadros de Resultados --- */
+.result {
+    margin-top: 25px;
+    padding: 18px;
+
+    /*  fondo translúcido para que combine con el vidrio */
+    background-color: rgba(238, 242, 255, 0.8);
+
+    border-left: 5px solid var(--primary-color);
+
+    /*  más redondeado, igual que el resto */
+    border-radius: 12px;
+
+    /*  sombra suave */
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+
+    text-align: left;
+
+    /*  el resultado aparece subiendo suavemente (la animación se define al final) */
+    animation: aparecer 0.4s ease;
+}
+
+.result h3 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.result p {
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+/* --- Listas de Tablas de Multiplicar --- */
+.table-list {
+    list-style: none;
+    margin-top: 20px;
+
+    /*  quita la sangría por defecto de la lista */
+    padding: 0;
+
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    /*  fondo blanco semitransparente */
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.table-list li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 0.95rem;
+
+    /*  anima el cambio de color al pasar el mouse */
+    transition: background-color 0.2s;
+}
+
+.table-list li:nth-child(even) {
+    /*  translúcido, igual que el resto */
+    background-color: rgba(249, 250, 251, 0.7);
+}
+
+/*  resalta la fila al pasar el mouse */
+.table-list li:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+}
+
+.table-list li:last-child {
+    border-bottom: none;
+}
+
+/* --- Enlaces de Navegación Atrás --- */
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    /*  anima también el desplazamiento */
+    transition: color 0.2s, transform 0.2s;
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+
+    /*la flecha se mueve un poco hacia la izquierda */
+    transform: translateX(-4px);
+}
+
+/* ANIMACIÓN DE ENTRADA  */
+@keyframes aparecer {
+    from {
+        opacity: 0;                      
+        transform: translateY(20px);     
+    }
+    to {
+        opacity: 1;                      
+        transform: translateY(0);        
+    }
+}

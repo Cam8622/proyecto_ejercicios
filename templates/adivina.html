@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Adivina el Numero</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2> Adivina el Numero </h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Tengo un numero entre el 1 y el 100, Adivinalo.</p>
+        
+        {% if not ganado %}
+            <form method="POST">
+                <input type="number" name="intento" required placeholder="Tu intento...">
+                <button type="submit">Adivinar</button>
+            </form>
+        {% endif %}
+
+        {% if pista %}
+            <div class="result">
+                <h3>{{ pista }}</h3>
+                <p>Intentos acumulados: <strong>{{ intentos }}</strong></p>
+            </div>
+        {% endif %}
+
+        {% if ganado %}
+            <div style="margin-top: 20px;">
+                <a href="/reiniciar_juego" class="btn-card" style="background-color: var(--success-color); color: white; border: none;"> Jugar de nuevo</a>
+            </div>
+        {% endif %}
+
+        <a href="/" class="back-link"> Volver al Inicio</a>
+    </div>
+</body>
+</html>
